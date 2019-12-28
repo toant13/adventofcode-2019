@@ -8,6 +8,13 @@ def get_fuel_requirement(mass):
     return 0 if answer <= 0 else answer
 
 
+def get_total_fuel_requirement(mass):
+    if mass == 0:
+        return mass
+    current = get_fuel_requirement(mass)
+    return current + get_total_fuel_requirement(current)
+
+
 def file_to_list():
     mass_list = []
     with open(DAY_ONE_PART_ONE_INPUT) as fp:
@@ -26,16 +33,7 @@ def part_one():
 
 def part_two():
     mass_list = file_to_list()
-    total_for_all_masses = 0
-
-    for mass in mass_list:
-        total_fuel_for_mass = 0
-        while mass > 0:
-            current_fuel_requirement = get_fuel_requirement(mass)
-            total_fuel_for_mass += current_fuel_requirement
-            mass = current_fuel_requirement
-        total_for_all_masses += total_fuel_for_mass
-    return total_for_all_masses
+    return sum([get_total_fuel_requirement(mass) for mass in mass_list])
 
 
 print(F"day one, part one: {part_one()}")
