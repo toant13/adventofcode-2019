@@ -18,8 +18,8 @@ def file_to_list():
     return list
 
 
-# from testing with different inputs, we see that noun increases output by 230400, verb increases output by 1 and the
-# base is 1258669
+# knowing math we can test different inputs and simplify the formula, we see that noun increases output by 230400,
+# verb increases output by 1 and the base is 1258669
 def part_two():
     output = 19690720
 
