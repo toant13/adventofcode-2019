@@ -1,3 +1,5 @@
+import math
+
 DAY_ONE_PART_ONE_INPUT = '../resources/day_two_part_one.txt'
 
 ADD = 1
@@ -14,6 +16,16 @@ def file_to_list():
             list += [int(value) for value in string_list]
             line = fp.readline()
     return list
+
+
+# from testing with different inputs, we see that noun increases output by 230400, verb increases output by 1 and the
+# base is 1258669
+def part_two():
+    output = 19690720
+
+    verb = (output - 1258669) % 230400
+    noun = math.floor((output - 1258669) / 230400)
+    return 100 * noun + verb
 
 
 def part_one():
@@ -33,3 +45,4 @@ def part_one():
 
 
 print(F"day two, part one: {part_one()}")
+print(F"day two, part two: {part_two()}")
